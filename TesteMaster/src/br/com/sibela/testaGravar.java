@@ -32,9 +32,18 @@ public class testaGravar extends HttpServlet {
 			response.getWriter().print("Gravado com sucesso!!!");
 
 			
+			/*
+			String jsonString = "oi";
+			
+			response.setCharacterEncoding("utf-8");
+			response.setContentType("application/json");
+			response.getWriter().print(jsonString);
+			*/
+			
 		} catch (SQLException e) {
 			System.out.println("Erro ao gravar!!!");
 			throw new ServletException(e);
 		}
+	}
 	}
 }

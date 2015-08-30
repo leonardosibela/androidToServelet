@@ -67,24 +67,69 @@ public class GravarActivity extends ActionBarActivity {
 
                 try {
 
+                    // Elements form screen as plaintext
                     ArrayList<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+
                     nameValuePairs.add(new BasicNameValuePair("nome", edtNome.getText().toString()));
                     nameValuePairs.add(new BasicNameValuePair("email", edtEmail.getText().toString()));
                     nameValuePairs.add(new BasicNameValuePair("endereco", edtEndereco.getText().toString()));
 
                     httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+                    HttpResponse response = httpClient.execute(httpPost);
+
+                    final HttpEntity entity = response.getEntity();
+
+                    String resposta = EntityUtils.toString(entity);
+
+                    Toast.makeText(getBaseContext(), resposta, Toast.LENGTH_LONG).show();
+
+
+
+
+
+                    /*
+
+                    // String json
+                    Item item = new Item();
+
+                    item.setIdItem(1);
+                    item.setIdLista(1);
+                    item.setQuantidade(3);
+                    item.setChecado(false);
+
+                    item.getProduto().setCodigoBarras("95320001");
+                    item.getProduto().setNome("Maionese Hellman");
+                    item.getProduto().setDecimal(false);
+
+                    //passes the results to a string builder/entity
+                    StringEntity stringEntity = new StringEntity(item.toStringJSON());
+
+                    //sets the post request as the resulting string
+                    httpPost.setEntity(stringEntity);
+
+                    //sets a request header so the page receving the request
+                    //will know what to do with it
+                    httpPost.setHeader("Accept", "application/json");
+                    httpPost.setHeader("Content-type", "application/json");
 
                     HttpResponse response = httpClient.execute(httpPost);
 
                     final HttpEntity entity = response.getEntity();
+
                     String resposta = EntityUtils.toString(entity);
+
                     Toast.makeText(getBaseContext(), resposta, Toast.LENGTH_LONG).show();
+
+                    */
+
 
                 } catch (ClientProtocolException e) {
                     e.printStackTrace();
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                } /*catch (JSONException e) {
+                    e.printStackTrace();
+                } */
             }
         });
     }
