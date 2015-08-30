@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Contato</string>
+
+    <string name="nome">Nome: </string>
+    <string name="email">E-mail: </string>
+    <string name="endereco">Endereço: </string>
+    <string name="gravar">Gravar</string>
+    <string name="action_settings">Settings</string>
+</resources>
